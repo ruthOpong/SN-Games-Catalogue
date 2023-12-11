@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="e2c43da9934331101b6b70aefaba10dd" label="Master Catalogue" max_length="40" name="x_1117940_games_master_catalogue" type="collection">
+        <element label="Average ratings" max_length="15" name="average_ratings" type="decimal"/>
+        <element attributes="edge_encryption_enabled=true" label="Description" max_length="200" name="description" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Game" max_length="40" name="game" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="adventure" label="Genre" max_length="40" name="genre" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="adventure" value="adventure"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Number of buys" max_length="40" name="number_of_buys" type="integer"/>
+        <element label="Number of refunds" max_length="40" name="number_of_refunds" type="integer"/>
+        <element label="Number of wishlist" max_length="40" name="number_of_wishlist" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Short description" max_length="40" name="short_description" type="string"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+    </element>
+</database>

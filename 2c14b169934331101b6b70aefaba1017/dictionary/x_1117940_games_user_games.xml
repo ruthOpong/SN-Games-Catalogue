@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="74f5712d934331101b6b70aefaba1082" label="user games" max_length="40" name="x_1117940_games_user_games" type="collection">
+        <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="1_star" label="Rating" max_length="40" name="rating" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="1 - star" value="1_star"/>
+                <element inactive_on_update="false" label="2 - stars" value="2_stars"/>
+                <element inactive_on_update="false" label="3 - stars" value="3_stars"/>
+                <element inactive_on_update="false" label="4 - stars" value="4_stars"/>
+                <element inactive_on_update="false" label="5 - stars" value="5_stars"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Review" max_length="40" name="review" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="brought" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="brought" value="brought"/>
+                <element inactive_on_update="false" label="refunded" value="ref"/>
+                <element inactive_on_update="false" label="wishlisted" value="wishlisted"/>
+            </choice>
+        </element>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element attributes="encode_utf8=false" label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+        <index name="index2">
+            <element name="user"/>
+        </index>
+    </element>
+</database>
