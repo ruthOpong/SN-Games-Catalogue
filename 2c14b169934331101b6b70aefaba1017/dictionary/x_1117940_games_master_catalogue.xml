@@ -2,10 +2,13 @@
     <element db_object_id="e2c43da9934331101b6b70aefaba10dd" label="Master Catalogue" max_length="40" name="x_1117940_games_master_catalogue" type="collection">
         <element label="Average ratings" max_length="15" name="average_ratings" type="decimal"/>
         <element attributes="edge_encryption_enabled=true" label="Description" max_length="200" name="description" type="string"/>
-        <element attributes="edge_encryption_enabled=true" label="Game" max_length="40" name="game" type="string"/>
+        <element attributes="edge_encryption_enabled=true" display="true" label="Game" mandatory="true" max_length="40" name="game" type="string"/>
         <element attributes="edge_encryption_enabled=true" choice="3" default="adventure" label="Genre" max_length="40" name="genre" type="choice">
             <choice>
-                <element inactive_on_update="false" label="adventure" value="adventure"/>
+                <element inactive="true" inactive_on_update="true" label="adventure" sequence="0" value="adventure"/>
+                <element inactive_on_update="false" label="Horror" sequence="1" value="horror"/>
+                <element inactive_on_update="false" label="Action" sequence="2" value="action"/>
+                <element inactive_on_update="false" label="FPS" sequence="3" value="fps"/>
             </choice>
         </element>
         <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
@@ -14,6 +17,15 @@
         <element label="Number of wishlist" max_length="40" name="number_of_wishlist" type="integer"/>
         <element attributes="edge_encryption_enabled=true" label="Short description" max_length="40" name="short_description" type="string"/>
         <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Game studio" mandatory="true" max_length="40" name="u_game_studio" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Electronic Arts" sequence="0" value="electronic arts"/>
+                <element inactive_on_update="false" label="SEGA" sequence="1" value="sega"/>
+                <element inactive_on_update="false" label="Ubisoft" sequence="2" value="ubisoft"/>
+                <element inactive_on_update="false" label="Nintend0" sequence="3" value="nintend0"/>
+            </choice>
+        </element>
+        <element attributes="omit_sys_original=true,serializer=com.glide.script.PriceXMLSerializer" label="Price" max_length="20" name="u_price_games" type="price"/>
         <index name="index">
             <element name="sys_class_name"/>
         </index>

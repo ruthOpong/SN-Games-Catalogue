@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1117940_games.TotalBWR</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>takes 2 records - Master game and a User game record. sorts user record's status</description>
+        <name>TotalBWR</name>
+        <script><![CDATA[var TotalBWR = function(status, userGame) {
+	var num;
+	switch(status){
+		case 'brought':
+			num = userGame.getValue('number_of_buys');
+			num = parseInt(num);
+			num += 1;
+			userGame.setValue('number_of_buys', num);
+			userGame.update();
+			break;
+		case 'ref':
+			num = userGame.getValue('number_of_refunds');
+			num = parseInt(num);
+			num += 1;
+			userGame.setValue('number_of_refunds', num);
+			userGame.update();
+			break;
+		case 'wishlisted':
+			num = userGame.getValue('number_of_wishlist');
+			num = parseInt(num);
+			num += 1;
+			userGame.setValue('number_of_wishlist', num);
+			userGame.update();
+			break;
+	}
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-12-12 16:03:57</sys_created_on>
+        <sys_id>44053b31938731101b6b70aefaba1017</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>TotalBWR</sys_name>
+        <sys_package display_value="Games" source="x_1117940_games">2c14b169934331101b6b70aefaba1017</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Games">2c14b169934331101b6b70aefaba1017</sys_scope>
+        <sys_update_name>sys_script_include_44053b31938731101b6b70aefaba1017</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-12-13 15:13:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

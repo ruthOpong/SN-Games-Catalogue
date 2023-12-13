@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_1117940_games_user_games</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_1117940_games_user_games">ratingVALCHANGES^EQ<item endquery="false" field="rating" goto="false" newquery="false" operator="VALCHANGES" or="false" value=""/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>rating average</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	var rec = new GlideRecord('x_1117940_games_user_games');
+		
+	var ratings = '';
+	var total = 0;
+	var count = 0;
+	
+	rec.addQuery('u_game', current.u_game);
+	rec.query();
+	
+	gs.info('records before while = ' + rec);
+	while (rec.next()) {
+		if (rec.getValue('number') != current.number){
+			ratings = rec.getValue('rating');}
+		
+		else { ratings = current.rating.toString(); }
+		gs.info('record = ' + ratings);
+		count += 1;
+		total += ratingsCheck(ratings);
+	}
+	
+	var average = total/count;
+	gs.info(' count = ' + count + ' total = ' + total + ' average = ' + average);
+	
+	var recGames = new GlideRecord('x_1117940_games_master_catalogue');
+	recGames.query();
+	
+	while (recGames.next()) {
+		var num = recGames.getValue('sys_id').toString();
+		gs.info('recGames number: ' + num + ' current.number: ' + current.u_game);
+		
+		if (num == current.u_game){
+		recGames.setValue('average_ratings', average);
+		recGames.update();}
+	}
+
+	})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-12-12 10:05:33</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>ecf322f5930331101b6b70aefaba104a</sys_id>
+        <sys_mod_count>33</sys_mod_count>
+        <sys_name>rating average</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Games" source="x_1117940_games">2c14b169934331101b6b70aefaba1017</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Games">2c14b169934331101b6b70aefaba1017</sys_scope>
+        <sys_update_name>sys_script_ecf322f5930331101b6b70aefaba104a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-12-12 14:57:29</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=ecf322f5930331101b6b70aefaba104a"/>
+</record_update>

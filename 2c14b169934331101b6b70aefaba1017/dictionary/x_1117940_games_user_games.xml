@@ -3,11 +3,12 @@
         <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element attributes="edge_encryption_enabled=true" choice="3" default="1_star" label="Rating" max_length="40" name="rating" type="choice">
             <choice>
-                <element inactive_on_update="false" label="1 - star" value="1_star"/>
-                <element inactive_on_update="false" label="2 - stars" value="2_stars"/>
-                <element inactive_on_update="false" label="3 - stars" value="3_stars"/>
-                <element inactive_on_update="false" label="4 - stars" value="4_stars"/>
-                <element inactive_on_update="false" label="5 - stars" value="5_stars"/>
+                <element inactive_on_update="false" label="1 - star" sequence="0" value="1_star"/>
+                <element inactive_on_update="false" label="2 - stars" sequence="1" value="2_stars"/>
+                <element inactive_on_update="false" label="3 - stars" sequence="2" value="3_stars"/>
+                <element inactive_on_update="false" label="4 - stars" sequence="3" value="4_stars"/>
+                <element inactive_on_update="false" label="5 - stars" sequence="4" value="5_stars"/>
+                <element inactive_on_update="false" label="No Rating" sequence="5" value="no_rating"/>
             </choice>
         </element>
         <element attributes="edge_encryption_enabled=true" label="Review" max_length="40" name="review" type="string"/>
@@ -20,10 +21,14 @@
         </element>
         <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
         <element attributes="encode_utf8=false" label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <element attributes="encode_utf8=false" label="Game" mandatory="true" max_length="32" name="u_game" reference="x_1117940_games_master_catalogue" type="reference"/>
         <index name="index">
             <element name="sys_class_name"/>
         </index>
         <index name="index2">
+            <element name="u_game"/>
+        </index>
+        <index name="index3">
             <element name="user"/>
         </index>
     </element>
